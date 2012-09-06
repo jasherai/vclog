@@ -70,7 +70,7 @@ module VCLog
       #       we will replace it by using the `amp` or `scm` gem.
       def extract_tags
         list = []
-        tags = `git tag -l`
+        tags = `git tag -l | sort -V`
         tags.split(/\s+/).each do |tag|
           next unless version_tag?(tag) # only version tags
           id, who, date, rev, msg = nil, nil, nil, nil, nil
